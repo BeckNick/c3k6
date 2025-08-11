@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="d:\Pictures\Camera Roll\favicon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mc.c3k6.top🎬丨无规则生存服务器 无秩序服务器 1.19＋版本</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/
+        
+        .explore-btn {
+            display: block;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .explore-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .explore-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .explore-btn:hover i {
+            transform: translateY(3px);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(90deg, #2c7744, #1e5799, #207cca, #2989d8, #1e5799);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 80px 20px 120px;
+            height: 100vh
+            display:flex;
+            flex-direction: column;
+            justify-content: center；
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .main-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .main-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-hint i {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 60px 40px;
+            margin: 50px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #2c7744, #2989d8);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #2c7744, #2989d8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover:after {
+            opacity: 0.4;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+        
+    </style>
+        
+    </style>
+</head>
+<body>
+</script>
+</div>
+
+</script>
+    <div class="container">
+        <header>
+            <h1>wreck36 C3K6</h1>
+            <p class="subtitle">c3k6.top 无规则 无秩序 生存服务器</p >
+            <p class="subtitle">官方玩家交流群：722196722</p >
+            <p class="subtitle">服主：Oheatplus</p >
+            <p class="subtitle">赞助服务器可获得称号 赞助请加入交流群</p >
+                <div class="btn-container">
+                <button class="main-btn" id="actionBtn">
+                    </i>ⓘ服务器更新日志
+                </button>
+            </div>
+            <div class="scroll-hint">
+</div>
+            <div class="scroll-hint">
+            </div>
+            <div class="btn-container">
+            </button>
+</script>
+        </section>
+        </header>
+            <h2 class="section-title">关于C3K6</h2>
+            <p class="subtitle">         服务器有什么特色？</p >
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">最好的反作弊</h3>
+                    <p class="feature-desc">禁用移动类作弊 如飞行，高跳 将一律阻止并回弹。</p >
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mouse-pointer"></i>
+                    </div>
+                    <h3 class="feature-title">挑战性</h3>
+                    <p class="feature-desc">死亡掉落与困难模式 出生点被破坏，混乱不堪，可以随意抄家与击杀玩家。</p >
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3 class="feature-title">战斗与友善</h3>
+                    <p class="feature-desc">在这里，你可以看见互相残杀，也可以看见友好的玩家。</p >
+                </div>
+            </div>
+        </section>
+        </section>
+        <section class="content-section">
+            <h2 class="section-title">无规则服务器是什么？</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                     <p class="feature-desc">
+<p class="feature-desc">   </p >
+<p class="feature-desc">>没有束缚，玩家可以做自己任何想做的事情 击杀，抄家，建筑，切磋，生电，炸图，背叛，完全没有人管理你们做什么,服务器没有任何的op（管理员）,在这里尽情玩耍吧！<</p >
+                </div>
+                <div class="gallery-item"> 
+<p class="feature-desc">   </p >                   
+<p class="feature-desc">>有勾心斗角，也有礼貌友好的玩家，你可以在这里找到组织，与他们并肩作战，地图永远不重置，永远不删档，真正的混乱，也有肝帝，也有萌新。<</p >
+                </div>
+                <div class="gallery-item">
+                 <p class="feature-desc">>有许多玩家在这里游玩，完全自由，没有规则，但资源要靠真正的实力获取，在这里不要相信任何人，允许欺骗。<</p >
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title">了解更多</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">leaves服务端</h3>
+                    <p class="feature-desc">优化将变得更好，生电也将轻而易举，允许原版特性的刷物品。</p >
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="feature-title">高性能配置</h3>
+                    <p class="feature-desc">使用32GB的内存，可以容下足够多的机器，cpu单核跑分超高，能足以撑下较多玩家。</p >
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="feature-title">允许mod</h3>
+                    <p class="feature-desc">可以使用服务端几乎所有mod，如小地图或优化模组，大大提升玩家体验。</p >
+        </section>
+                     <section class="content-section">
+            <h3 class="section-title">赞助名单</h3>
+<h4 class="section-title">1.于斯为盛 赞助200元 自定义称号，颜色</h4>        
+<h4 class="section-title">2.🐔小黄瓜三国杀 赞助101元 自定义称号，颜色</h4>    
+<h4 class="section-title">3.爱吃海鲜的咖啡 赞助100元 自定义称号，颜色</h4>    
+<h4 class="section-title">4.千年鴿 赞助30元 自定义称号，颜色</h4>    
+<h4 class="section-title">5.nadarling000 赞助30元 自定义称号，颜色</h4>    
+<h4 class="section-title">6.wen 赞助20.78元 自定义称号，颜色</h4>    
+<h4 class="section-title">7.zxc12345 赞助20元 自定义称号，颜色</h4>    
+<h4 class="section-title">8.Linsk 赞助15元 自定义称号，颜色</h4>    
+<h4 class="section-title">9. . 赞助14.91元 自定义称号，颜色</h4>    
+<h4 class="section-title">10.[曦]元气曦宝. 赞助14.78元 自定义称号，颜色</h4>    
+<h4 class="section-title">11.AAA建材批发贝利亚 赞助14元 自定义称号，颜色</h4>    
+<h4 class="section-title">12.xie_lan 赞助14元 自定义称号，颜色</h4>    
+<h4 class="section-title">13.？？？ 赞助14元 自定义称号，颜色</h4>    
+<h4 class="section-title">14.滅罪 赞助14元 自定义称号，颜色</h4>    
+<h4 class="section-title">15.汉庭 赞助10元 自定义称号，黄色</h4>
+                </div>
+            </div>
+                    </div>
+                     <section class="content-section">
+        <footer>
+<h2 class="section-title">服务器内容</h2>
+<h3 class="feature-title">服务器种子：-450769288972855731，核心版本1.21.4，可使用1.19-1.21.x进入服务器。</h3>
+<h3 class="feature-title">服务器全名wreck36，简称C3K6。难度困难，交流群722196722</h3>
+<h3 class="feature-title">允许矿透等 辅助mod</h3>
+ <h3 class="feature-title">禁止移动类作弊。</h3>
+             <div>
+            </div>
+        </section>
+                      <section class="content-section">
+        <footer>
+            <h2 class="section-title">进入服务器游玩吧！</h2>
+            <h3 class="feature-title">无需正版，ip直连，只需在1.19＋版本。</h3>
+             <h3 class="feature-title">输入mc.c3k6.top就可以游玩C3K6生存服务器了！
+            <h3 class="feature-title">首次进入服务器需要注册，请输入/reg 密码 密码</h3>
+            <h3 class="feature-title">以后进服登录输入/login 密码</h3>
+            <h3 class="feature-title">修改密码请输入/cp 旧密码 新密码</h3>
+            <h3 class="feature-title">绑定电子邮箱(用于找回账号）请输入/email add 邮箱 再次输入邮箱</h3>
+            <h3 class="feature-title">修改邮箱请输入/eamil change 旧邮箱 新邮箱</h3>
+            <h3 class="feature-title">如果忘记密码，但是绑定了邮箱，找回账号请输入/eamil recover 邮箱</h3>
+            <h3 class="feature-title">输入后将会向邮箱发送验证码，按照提示输入即可登录</h3>
+         <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                    </div>
+                    <h3 class="feature-title">更新日志</h3>
+                    <p class="feature-desc">2025.6.4 修复高版本无法使用鞘翅，右键地面回弹</p >
+                    <p class="feature-desc">2025.8.11 建立C3K6官方网站</p >
+                </div>s
+        </section>
+        <footer>
+            <p>© 于2025年正式开服 | 1.20.1核心版本</p >
+            <p>挑战性 · 战斗 · 友善</p >
+        </footer>
+    <script>
+        // 交互按钮功能
+        const actionBtn = document.getElementById('actionBtn');
+        
+        actionBtn.addEventListener('click', function() {
+            // 平滑滚动到下一个部分
+            window.scrollTo({
+            top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+            
+            // 保留原有的粒子效果（可选）
+        });
+        
+        // 粒子效果函数（保留原有功能）
+        function createParticles() {
+            const colors = ['#2c7744', '#1e5799', '#207cca', '#2989d8', '#5ac8aa'];
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '10px';
+                particle.style.height = '10px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '999';
+                particle.style.boxShadow = '0 0 15px currentColor';
+                
+                document.body.appendChild(particle);
+                
+                const animation = particle.animate([
+                    { transform: 'scale(0)', opacity: 1 },
+                    { transform: 'scale(1.5)', opacity: 0.7 },
+                    { transform: 'scale(3)', opacity: 0 }
+                ], {
+                    duration: 1500,
+                    easing: 'ease-out'
+                });
+                
+                animation.onfinish = () => particle.remove();
+            }
+        }
+    </script>
+</body>
+</html>
