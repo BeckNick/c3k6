@@ -48,18 +48,10 @@
         }
         
         body {
-            background: linear-gradient(90deg, #2c7744, #1e5799, #207cca, #2989d8, #1e5799);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
+            background: linear-gradient(135deg, #3a3e44 0%, #2c3035 50%, #1f2226 100%);
+            color: #e0e0e0;
             overflow-x: hidden;
             min-height: 100vh;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         
         .container {
@@ -81,6 +73,7 @@
         h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            color: #fff;
             text-shadow: 0 2px 10px rgba(0,0,0,0.2);
             letter-spacing: 1px;
         }
@@ -97,6 +90,8 @@
             display: flex;
             justify-content: center;
             margin-top: 60px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
         .main-btn {
@@ -151,6 +146,7 @@
             padding: 60px 40px;
             margin: 50px 0;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .section-title {
@@ -158,6 +154,7 @@
             font-size: 2.5rem;
             margin-bottom: 50px;
             position: relative;
+            color: #fff;
         }
         
         .section-title:after {
@@ -206,6 +203,7 @@
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            color: #fff;
         }
         
         .feature-desc {
@@ -227,6 +225,11 @@
             overflow: hidden;
             position: relative;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .gallery-item img {
@@ -269,6 +272,18 @@
             h1 { font-size: 2.5rem; }
             .subtitle { font-size: 1.2rem; }
             .section-title { font-size: 2rem; }
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .sponsor-btn {
+            background: linear-gradient(to right, #ff8a00, #ff2070);
+        }
+        
+        .sponsor-btn:hover {
+            background: linear-gradient(to right, #ff9a2f, #ff3080);
         }
     </style>
 </head>
@@ -284,23 +299,29 @@
             >
             <p class="subtitle"> c3k6.top 无规则 无秩序 生存服务器</p>
             <p class="subtitle">官方玩家交流群：722196722</p>
-            <p class="subtitle">服主：Oheatplus</p>
+            <p class="subtitle">服主：BeckNick</p>
             <p class="subtitle">赞助服务器可获得称号 赞助请加入交流群</p>
+            
             <div class="btn-container">
                 <button class="main-btn" id="actionBtn">
                     ⓘ服务器更新日志
                 </button>
+                <button class="main-btn sponsor-btn" id="sponsorBtn">
+                    <i class="fas fa-donate"></i>赞助我们
+                </button>
             </div>
-            <div class="scroll-hint"></div>
+            
+            <div class="scroll-hint">
+                       </div>
         </header>
         
         <section class="content-section">
             <h2 class="section-title">关于C3K6</h2>
-            <p class="subtitle">服务器有什么特色？</p>
+            <p class="subtitle" style="text-align: center;">服务器有什么特色？</p>
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3 class="feature-title">最好的反作弊</h3>
                     <p class="feature-desc">禁用移动类作弊 如飞行，高跳 将一律阻止并回弹。</p>
@@ -308,7 +329,7 @@
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-mouse-pointer"></i>
+                        <i class="fas fa-skull"></i>
                     </div>
                     <h3 class="feature-title">挑战性</h3>
                     <p class="feature-desc">死亡掉落与困难模式 出生点被破坏，混乱不堪，可以随意抄家与击杀玩家。</p>
@@ -316,7 +337,7 @@
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-scroll"></i>
+                        <i class="fas fa-fist-raised"></i>
                     </div>
                     <h3 class="feature-title">战斗与友善</h3>
                     <p class="feature-desc">在这里，你可以看见互相残杀，也可以看见友好的玩家。</p>
@@ -375,37 +396,6 @@
         </section>
         
         <section class="content-section">
-            <h3 class="section-title">赞助名单</h3>
-            <h4 class="section-title">1.于斯为盛 赞助200元 自定义称号，颜色</h4>    
-            <h4 class="section-title">2.🐔小黄瓜三国杀 赞助101元 自定义称号，颜色</h4>
-            <h4 class="section-title">3.爱吃海鲜的咖啡 赞助100元 自定义称号，颜色</h4>
-            <h4 class="section-title">4.千年鴿 赞助30元 自定义称号，颜色</h4>
-            <h4 class="section-title">5.nadarling000 赞助30元 自定义称号，颜色</h4>
-            <h4 class="section-title">6.24K—赫兹 赞助24元 自定义称号，颜色</h4>
-            <h4 class="section-title">7.wen 赞助20.78元 自定义称号，颜色</h4>
-            <h4 class="section-title">8.zxc12345 赞助20元 自定义称号，颜色</h4>
-            <h4 class="section-title">9.Linsk 赞助15元 自定义称号，颜色</h4>
-            <h4 class="section-title">10.匿名 赞助15元 自定义称号，颜色</h4>
-            <h4 class="section-title">11. . 赞助14.91元 自定义称号，颜色</h4>
-            <h4 class="section-title">12.[曦]元气曦宝. 赞助14.78元 自定义称号，颜色</h4>
-            <h4 class="section-title">13.AAA建材批发贝利亚 赞助14元 自定义称号，颜色</h4>
-            <h4 class="section-title">14.xie_lan 赞助14元 自定义称号，颜色</h4>
-            <h4 class="section-title">15.？？？ 赞助14元 自定义称号，颜色</h4>
-            <h4 class="section-title">16.滅罪 赞助14元 自定义称号，颜色</h4>          
-            <h4 class="section-title">17.w 赞助14元 自定义称号，颜色</h4>
-            <h4 class="section-title">18.汉庭 赞助10元 自定义称号，黄色</h4>
-            <h4 class="section-title">19.AAA 羊村村长 c_my 新人来加 赞助10元 自定义称号，黄色</h4>
-            <h4 class="section-title">20.大家儿童区 赞助10元 自定义称号，黄色</h4>
-            <img 
-                src="skm.png" 
-                alt="打赏渠道"
-                width="310"
-                style="display: block; margin: 0 auto;"
-            >
-            <h1 class="feature-title">请在此处打赏。</h1>
-        </section>
-        
-        <section class="content-section">
             <h2 class="section-title">服务器内容</h2>
             <h3 class="feature-title">服务器种子：-450769288972855731，核心版本1.21.4，可使用1.19-1.21.x进入服务器。</h3>
             <h3 class="feature-title">服务器全名wreck36，简称C3K6。难度困难，交流群722196722</h3>
@@ -424,7 +414,17 @@
             <h3 class="feature-title">修改邮箱请输入/eamil change 旧邮箱 新邮箱</h3>
             <h3 class="feature-title">如果忘记密码，但是绑定了邮箱，找回账号请输入/eamil recover 邮箱</h3>
             <h3 class="feature-title">输入后将会向邮箱发送验证码，按照提示输入即可登录</h3>
+            
             <div class="features">
+                <div class="feature-card">
+                    <h3 class="feature-title">更新日志</h3>
+                    <p class="feature-desc">2025.6.4 修复高版本无法使用鞘翅，右键地面回弹等问题</p>
+                    <p class="feature-desc">2025.6.8 服务器升级1.21.1版本【1个大更新，添加重锤等物品，增加地形】</p>
+                    <p class="feature-desc">2025.8.4 服务器升级1.21.4版本【版本修改了很多的游戏特性，增加地形】</p>
+                    <p class="feature-desc">2025.8.11 建立C3K6官方网站【此官网】</p>
+                    <p class="feature-desc">2025.8.20 服务器升级配置，升级版本至1.21.8【增加乐魂等物品生物，修复bug】</p>
+                </div>
+            </div>
         </section>
         
         <footer>
@@ -436,13 +436,19 @@
     <script>
         // 交互按钮功能
         const actionBtn = document.getElementById('actionBtn');
+        const sponsorBtn = document.getElementById('sponsorBtn');
         
         actionBtn.addEventListener('click', function() {
-            // 跳转到新页面
+            // 跳转到更新日志页面
             window.location.href = 'https://web.c3k6.top/log';
             
-            // 保留原有的粒子效果（可选）
+            // 保留原有的粒子效果
             createParticles();
+        });
+        
+        sponsorBtn.addEventListener('click', function() {
+            // 跳转到赞助页面
+            window.location.href = 'https://web.c3k6.top/snr';
         });
         
         // 粒子效果函数（保留原有功能）
@@ -479,42 +485,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
