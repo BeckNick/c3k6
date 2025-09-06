@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赞助名单 - C3K6.top</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #3a3e44 0%, #2c3035 50%, #1f2226 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .content-section {
+            background: rgba(45, 49, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #2c7744, #2989d8);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .sponsors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .sponsor-card {
+            background: rgba(55, 59, 65, 0.7);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #2c7744;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(55, 59, 65, 0.9);
+        }
+        
+        .sponsor-name {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sponsor-name i {
+            margin-right: 10px;
+            color: #5ac8aa;
+        }
+        
+        .sponsor-amount {
+            font-size: 1.1rem;
+            color: #5ac8aa;
+            margin-bottom: 10px;
+        }
+        
+        .sponsor-benefits {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            background: rgba(42, 157, 143, 0.2);
+            color: #2a9d8f;
+        }
+        
+        .donation-section {
+            text-align: center;
+            padding: 40px 20px;
+            margin: 40px 0;
+        }
+        
+        .donation-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .donation-desc {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .qr-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .donation-note {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .sponsors-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .qr-code {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        .highlight {
+            color: #5ac8aa;
+            font-weight: bold;
+        }
+        
+        .rank-1 { border-left-color: #ffd700; }
+        .rank-2 { border-left-color: #c0c0c0; }
+        .rank-3 { border-left-color: #cd7f32; }
+        
+        .rank-1 .sponsor-name i { color: #ffd700; }
+        .rank-2 .sponsor-name i { color: #c0c0c0; }
+        .rank-3 .sponsor-name i { color: #cd7f32; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>赞助名单</h1>
+            <p class="subtitle">感谢以下玩家对C3K6服务器的支持与赞助</p>
+            <div class="nav-buttons">
+                <a href="https://web.c3k6.top" class="nav-btn">
+                    <i class="fas fa-home"></i> 返回首页
+                </a>
+                </a>
+            </div>
+        </header>
+        
+        <section class="content-section">
+            <h2 class="section-title">赞助者荣誉榜</h2>
+            <div class="sponsors-list">
+                <div class="sponsor-card rank-1">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-crown"></i> 于斯为盛 <span class="badge">第一名</span>
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">200元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card rank-2">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-medal"></i> 🐔小黄瓜三国杀 <span class="badge">第二名</span>
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">101元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card rank-3">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-award"></i> 爱吃海鲜的咖啡 <span class="badge">第三名</span>
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">100元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-star"></i> 千年鴿
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">30元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-star"></i> nadarling000
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">30元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-star"></i> 24K—赫兹
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">24元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-star"></i> wen
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">20.78元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-star"></i> zxc12345
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">20元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title">更多赞助者</h2>
+            <div class="sponsors-list">
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> Linsk
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">15元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> 匿名
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">15元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> .
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14.91元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> [曦]元气曦宝.
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14.78元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> AAA建材批发贝利亚
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> xie_lan
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> ？？？
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> 滅罪
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> w
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">14元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，颜色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> 汉庭
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">10元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，黄色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> AAA 羊村村长 c_my 新人来加
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">10元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，黄色</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3 class="sponsor-name">
+                        <i class="fas fa-heart"></i> 大家儿童区
+                    </h3>
+                    <p class="sponsor-amount">赞助金额: <span class="highlight">10元</span></p>
+                    <p class="sponsor-benefits">获得权益: 自定义称号，黄色</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="donation-section">
+            <h2 class="donation-title">支持C3K6服务器</h2>
+            <p class="donation-desc">
+                赞助将用于服务器维护和提升配置，帮助我们提供更好的游戏体验。<br>
+                赞助特定金额即可获得游戏内专属称号和颜色奖励！
+            </p>
+            
+            <img 
+                src="skm.png" 
+                alt="打赏渠道"
+                width="310"
+                style="display: block; margin: 0 auto;"
+            >
+            <h1 class="feature-title">请在此处打赏。</h1>
+        </section>
+                </div>
+            </div>
+            
+            <p class="donation-note">
+          谢谢你们的支持！
+            </p>
+        </section>
+        
+        <footer>
+            <p>© 2025 C3K6.top 无规则生存服务器 | 感谢所有赞助者的支持</p>
+            <p>官方玩家交流群：722196722 | 服主：BeckNick</p>
+        </footer>
+    </div>
+</body>
+</html>
