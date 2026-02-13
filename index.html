@@ -13,58 +13,81 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        
+
         html, body {
             width: 100%;
+            height: 100%;
             overflow-x: hidden;
+            background-color: #0b0d10;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #3a3e44 0%, #2c3035 50%, #1f2226 100%);
+            background: #0b0d10;
             color: #e0e0e0;
-            overflow-x: hidden;
             min-height: 100vh;
             position: relative;
+            line-height: 1.5;
+            font-weight: 300;
+            letter-spacing: 0.02em;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            z-index: 1;
         }
-        
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
         header {
             text-align: center;
-            padding: 80px 20px 120px;
-            min-height: 100vh;
+            padding: 60px 20px 100px;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
-        
+
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 20px;
             color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(0, 150, 255, 0.25);
+            letter-spacing: 2px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffffff, #b0d0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        
+
         .subtitle {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 16px;
             font-weight: 300;
-            opacity: 0.9;
+            opacity: 0.85;
             width: 100%;
             text-align: center;
         }
-        
+
         .btn-container {
             display: flex;
             justify-content: center;
@@ -73,236 +96,289 @@
             flex-wrap: wrap;
             width: 100%;
         }
-        
+
         .main-btn {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(20, 25, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: white;
-            padding: 18px 35px;
-            font-size: 1.2rem;
+            padding: 16px 36px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            gap: 10px;
+            box-shadow: 0 12px 25px -10px rgba(0, 0, 0, 0.7);
             max-width: 100%;
             text-align: center;
             white-space: nowrap;
-            /* 电脑端默认宽度 */
             width: 280px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .main-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+            background: rgba(20, 25, 30, 0.9);
+            transform: translateY(-8px) scale(1.01) !important;
+            box-shadow: 0 25px 35px -15px black !important;
+            border-color: rgba(255,255,255,0.15) !important;
         }
-        
+
+        .sponsor-btn {
+            background: linear-gradient(135deg, rgba(255, 120, 50, 0.3), rgba(200, 40, 100, 0.3));
+            border: 1px solid rgba(255, 140, 80, 0.3);
+        }
+
+        .sponsor-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 120, 50, 0.3), rgba(200, 40, 100, 0.3));
+            border-color: rgba(255, 160, 100, 0.5) !important;
+        }
+
         .scroll-hint {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
-            opacity: 0.7;
-            animation: bounce 2s infinite;
+            opacity: 0.4;
+            animation: bounce 2.4s infinite;
         }
-        
-        .scroll-hint i {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-        
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-20px) translateX(-50%);}
-            60% {transform: translateY(-10px) translateX(-50%);}
+            40% {transform: translateY(-12px) translateX(-50%);}
+            60% {transform: translateY(-6px) translateX(-50%);}
         }
-        
+
         .content-section {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 60px 40px;
-            margin: 50px 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(12, 16, 20, 0.9);
+            border-radius: 36px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            box-shadow: 0 25px 45px -20px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             width: 100%;
+            transition: box-shadow 0.3s ease;
         }
-        
+
+        .content-section:hover {
+            box-shadow: 0 30px 55px -18px black;
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             margin-bottom: 50px;
             position: relative;
             color: #fff;
             width: 100%;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(to right, #2c7744, #2989d8);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            width: 100%;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 35px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #2c7744, #2989d8);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff, #b0c8e0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #2c7744, #2989d8, #2c7744);
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            opacity: 0.6;
         }
-        
-        .feature-desc {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.85;
+
+        /* ===== 所有卡片悬停效果 - 使用 !important 确保浏览器生效 ===== */
+        .feature-card,
+        .gallery-item,
+        .info-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            will-change: transform;
         }
-        
-        .gallery {
+
+        .feature-card:hover,
+        .gallery-item:hover,
+        .info-card:hover {
+            transform: translateY(-8px) scale(1.01) !important;
+            box-shadow: 0 30px 45px -18px #000 !important;
+            border-color: rgba(255, 255, 255, 0.12) !important;
+            background: rgba(20, 24, 30, 0.9) !important; /* 确保背景不变 */
+        }
+
+        .features {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
             width: 100%;
         }
-        
+
+        .feature-card {
+            background: rgba(20, 24, 30, 0.9);
+            border-radius: 24px;
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            width: 100%;
+            box-shadow: 0 12px 25px -12px black;
+        }
+
+        .feature-icon {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, #70b8ff, #2c7744);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 8px rgba(0,100,200,0.2));
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
         .gallery-item {
-            height: 250px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            background: rgba(16, 20, 26, 0.9);
+            border-radius: 24px;
+            padding: 28px 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid rgba(255,255,255,0.02);
+            min-height: 200px;
+            flex: 0 1 280px;
+            min-width: 260px;
+            max-width: 100%;
+            box-shadow: 0 18px 30px -12px black;
+        }
+
+        .gallery-item .feature-desc {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
             width: 100%;
         }
-        
-        .gallery-item img {
+
+        .info-card {
+            background: rgba(20, 24, 30, 0.9);
+            border-radius: 24px;
+            padding: 28px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 15px 30px -15px black;
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            word-break: break-word;
+        }
+
+        .info-card .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+            color: #cfcfcf;
+            font-weight: 350;
+            line-height: 1.5;
+            border-bottom: none;
+            padding: 0;
+        }
+
+        .instruction-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .instruction-grid .info-card {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            padding: 20px 22px;
         }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-item:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover:after {
-            opacity: 0.4;
-        }
-        
+
         footer {
             text-align: center;
             padding: 40px 20px;
             margin-top: 80px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.1rem;
-            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 1rem;
+            opacity: 0.7;
             width: 100%;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
-        
+
         .explore-btn {
             display: block;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            margin: 30px auto;
+            background: rgba(20, 25, 32, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 10px 26px;
+            font-size: 0.95rem;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
-            max-width: 200px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 180px;
+            box-shadow: 0 6px 16px -6px black;
             width: 100%;
         }
-        
+
         .explore-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(20, 25, 32, 0.9);
+            transform: translateY(-8px) scale(1.01) !important;
+            box-shadow: 0 20px 30px -12px black !important;
         }
-        
+
         .explore-btn i {
-            margin-left: 8px;
-            transition: transform 0.3s;
+            margin-left: 6px;
+            transition: transform 0.3s ease;
         }
-        
+
         .explore-btn:hover i {
-            transform: translateY(3px);
+            transform: translateY(2px);
         }
-        
-        .sponsor-btn {
-            background: linear-gradient(to right, #ff8a00, #ff2070);
-        }
-        
-        .sponsor-btn:hover {
-            background: linear-gradient(to right, #ff9a2f, #ff3080);
-        }
-        
-        /* 按钮文字优化类 */
+
         .btn-text-optimized {
             display: inline-block;
             max-width: 100%;
@@ -310,83 +386,115 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        
-        /* 移动端优化 */
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: opacity, transform;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.2rem; }
+            h1 { font-size: 2.6rem; }
+            .subtitle { font-size: 1rem; }
             .section-title { font-size: 2rem; }
             .btn-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 15px;
+                gap: 12px;
             }
             .container {
-                padding: 15px;
+                padding: 15px 20px;
             }
             .content-section {
-                padding: 40px 20px;
-                margin: 30px 0;
+                padding: 40px 25px;
+                margin: 40px 0;
+                border-radius: 28px;
             }
-            .features, .gallery {
+            .features {
                 grid-template-columns: 1fr;
             }
             .gallery-item {
-                height: 200px;
+                flex: 0 1 100%;
             }
             .main-btn {
-                padding: 15px 20px;
-                font-size: 1rem;
+                padding: 14px 22px;
+                font-size: 0.95rem;
                 width: 100%;
-                max-width: 300px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            /* 移动端按钮文字优化 */
-            .main-btn span.long-text {
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .section-title { font-size: 1.8rem; }
-            .container {
-                padding: 10px;
-            }
-            .content-section {
-                padding: 30px 15px;
-                margin: 20px 0;
-            }
-            .feature-card {
-                padding: 25px 20px;
+                max-width: 280px;
+                white-space: normal;
             }
             .feature-title {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
             .feature-desc {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
-            .main-btn {
-                padding: 14px 18px;
-                font-size: 0.9rem;
-                max-width: 280px;
+            .info-card .feature-title {
+                font-size: 1.1rem;
             }
-            /* 超小屏幕按钮文字优化 */
-            .main-btn span.long-text {
-                font-size: 0.85rem;
+            .instruction-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .instruction-grid .info-card {
+                padding: 18px 18px;
+            }
+            .feature-card:hover,
+            .gallery-item:hover,
+            .info-card:hover {
+                transform: translateY(-5px) scale(1.005) !important;
             }
         }
-        
-        /* 大屏幕优化 */
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 0.95rem; }
+            .section-title { font-size: 1.7rem; }
+            .container {
+                padding: 10px 15px;
+            }
+            .content-section {
+                padding: 30px 18px;
+            }
+            .feature-card {
+                padding: 25px 18px;
+            }
+            .main-btn {
+                font-size: 0.85rem;
+                padding: 12px 16px;
+            }
+            .gallery-item .feature-desc {
+                font-size: 0.95rem;
+            }
+        }
+
         @media (min-width: 1200px) {
             .main-btn {
-                width: 320px;
-                padding: 20px 40px;
-                font-size: 1.3rem;
+                width: 300px;
+                padding: 18px 38px;
+                font-size: 1.2rem;
             }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0f12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a333c;
+            border-radius: 8px;
+            border: 1px solid #3a4450;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3e4b58;
         }
     </style>
 </head>
@@ -398,13 +506,13 @@
                 src="tx.jpg"   
                 alt="一"  
                 width="140"  
-                style="border: 2px solid #ddd; border-radius: 10px; max-width: 100%;"
+                style="border: 2px solid rgba(255,255,255,0.1); border-radius: 18px; max-width: 100%; box-shadow: 0 18px 28px -10px black;"
             >
             <p class="subtitle">                 </p>
-            <p class="subtitle"> c3k6.top 无规则 无秩序 生存服务器</p>
-            <p class="subtitle">官方玩家交流群：722196722</p>
-            <p class="subtitle">服主：BeckNick</p>
-            <p class="subtitle">赞助服务器可获得称号 赞助请加入交流群</p>
+            <p class="subtitle fade-up"> c3k6.top 无规则 无秩序 生存服务器</p>
+            <p class="subtitle fade-up">官方玩家交流群：722196722</p>
+            <p class="subtitle fade-up">服主：BeckNick</p>
+            <p class="subtitle fade-up">赞助服务器可获得称号 赞助请加入交流群</p>
             
             <div class="btn-container">
                 <button class="main-btn" id="actionBtn">
@@ -420,11 +528,12 @@
                        </div>
         </header>
         
+        <!-- 关于C3K6 -->
         <section class="content-section">
-            <h2 class="section-title">关于C3K6</h2>
-            <p class="subtitle" style="text-align: center;">服务器有什么特色？</p>
+            <h2 class="section-title fade-up">关于C3K6</h2>
+            <p class="subtitle fade-up" style="text-align: center;">服务器有什么特色？</p>
             <div class="features">
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -432,7 +541,7 @@
                     <p class="feature-desc">禁用大部分作弊 如飞行，杀戮光环 将一律阻止并拉回。</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-skull"></i>
                     </div>
@@ -440,7 +549,7 @@
                     <p class="feature-desc">死亡掉落与困难模式 出生点被破坏，混乱不堪，可以随意抄家与击杀玩家。</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-fist-raised"></i>
                     </div>
@@ -450,20 +559,21 @@
             </div>
         </section>
         
+        <!-- 无规则服务器是什么？ -->
         <section class="content-section">
-            <h2 class="section-title">无规则服务器是什么？</h2>
+            <h2 class="section-title fade-up">无规则服务器是什么？</h2>
             <div class="gallery">
-                <div class="gallery-item">
+                <div class="gallery-item fade-up">
                     <p class="feature-desc">
                         >没有束缚，玩家可以做自己任何想做的事情 击杀，抄家，建筑，切磋，生电，炸图，背叛，完全没有人管理你们做什么,服务器没有的管理员干扰,在这里尽情玩耍吧！<
                     </p>
                 </div>
-                <div class="gallery-item">                   
+                <div class="gallery-item fade-up">                   
                     <p class="feature-desc">
                         >有勾心斗角，也有礼貌友好的玩家，你可以在这里找到组织，与他们并肩作战，地图永远不重置，永远不删档，真正的混乱，也有肝帝，也有萌新。<
                     </p>
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item fade-up">
                     <p class="feature-desc">
                         >有许多玩家在这里游玩，完全自由，没有规则，但资源要靠真正的实力获取，在这里不要相信任何人，允许欺骗。<
                     </p>
@@ -471,10 +581,11 @@
             </div>
         </section>
         
+        <!-- 了解更多 -->
         <section class="content-section">
-            <h2 class="section-title">了解更多</h2>
+            <h2 class="section-title fade-up">了解更多</h2>
             <div class="features">
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
@@ -482,7 +593,7 @@
                     <p class="feature-desc">优化将变得更好，生电也将轻而易举，允许原版特性的刷物品。</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
@@ -490,7 +601,7 @@
                     <p class="feature-desc">使用32GB的内存，可以容下足够多的机器，cpu单核跑分超高，能足以撑下较多玩家。</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card fade-up">
                     <div class="feature-icon">
                         <i class="fas fa-eye"></i>
                     </div>
@@ -500,56 +611,112 @@
             </div>
         </section>
         
+        <!-- 服务器内容 -->
         <section class="content-section">
-            <h2 class="section-title">服务器内容</h2>
-            <h3 class="feature-title">服务器种子：-450769288972855731，核心版本1.21.4，可使用1.19-1.21.x进入服务器。</h3>
-            <h3 class="feature-title">服务器全名wreck36，简称C3K6。难度困难，交流群722196722</h3>
-            <h3 class="feature-title">允许矿透等 辅助mod</h3>
-            <h3 class="feature-title">禁止大部分作弊。</h3>
-        </section>
-        
-        <section class="content-section">
-            <h2 class="section-title">进入服务器游玩吧！</h2>
-            <h3 class="feature-title">无需正版，ip直连，只需在1.19-1.21.x版本。</h3>
-            <h3 class="feature-title">输入c3k6.top就可以游玩C3K6生存服务器了！</h3>
-            <h3 class="feature-title">首次进入服务器需要注册，请输入/reg 密码 密码</h3>
-            <h3 class="feature-title">以后进服登录输入/login 密码</h3>
-            <h3 class="feature-title">修改密码请输入/cp 旧密码 新密码</h3>
-            <h3 class="feature-title">绑定电子邮箱(用于找回账号）请输入/email add 邮箱 再次输入邮箱</h3>
-            <h3 class="feature-title">修改邮箱请输入/eamil change 旧邮箱 新邮箱</h3>
-            <h3 class="feature-title">如果忘记密码，但是绑定了邮箱，找回账号请输入/eamil recover 邮箱</h3>
-            <h3 class="feature-title">输入后将会向邮箱发送验证码，按照提示输入即可登录</h3>
-            
+            <h2 class="section-title fade-up">服务器内容</h2>
+            <div class="info-grid">
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">服务器种子：-450769288972855731，核心版本1.21.4，可使用1.19-1.21.x进入服务器。</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">服务器全名wreck36，简称C3K6。难度困难，交流群722196722</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">允许矿透等 辅助mod</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">禁止大部分作弊。</h3>
                 </div>
             </div>
         </section>
         
-        <footer>
+        <!-- 进入服务器游玩吧（两列） -->
+        <section class="content-section">
+            <h2 class="section-title fade-up">进入服务器游玩吧！</h2>
+            <div class="instruction-grid">
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">无需正版，ip直连，只需在1.19-1.21.x版本。</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">输入c3k6.top就可以游玩C3K6生存服务器了！</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">首次进入服务器需要注册，请输入/reg 密码 密码</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">以后进服登录输入/login 密码</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">修改密码请输入/cp 旧密码 新密码</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">绑定电子邮箱(用于找回账号）请输入/email add 邮箱 再次输入邮箱</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">修改邮箱请输入/eamil change 旧邮箱 新邮箱</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">如果忘记密码，但是绑定了邮箱，找回账号请输入/eamil recover 邮箱</h3>
+                </div>
+                <div class="info-card fade-up">
+                    <h3 class="feature-title">输入后将会向邮箱发送验证码，按照提示输入即可登录</h3>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="fade-up">
             <p>© 于2025年3月28日正式开服 | 1.21.8核心版本</p>
             <p>挑战性 · 战斗 · 友善</p>
         </footer>
     </div>
     
     <script>
-        // 交互按钮功能
-        const actionBtn = document.getElementById('actionBtn');
-        const sponsorBtn = document.getElementById('sponsorBtn');
-        
-        actionBtn.addEventListener('click', function() {
-            // 跳转到更新日志页面
-            window.location.href = 'https://web.c3k6.top/log';
-            // 移除了粒子效果调用
-        });
-        
-        sponsorBtn.addEventListener('click', function() {
-            // 跳转到赞助页面
-            window.location.href = 'https://web.c3k6.top/snr';
-        });
-        
-        // 粒子效果函数已完全移除
+        (function() {
+            const fadeElements = document.querySelectorAll('.fade-up');
+            
+            if (fadeElements.length > 0) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: "0px 0px -10px 0px",
+                });
+
+                fadeElements.forEach(el => observer.observe(el));
+                
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 80 && rect.bottom > 0) {
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            }
+
+            const actionBtn = document.getElementById('actionBtn');
+            const sponsorBtn = document.getElementById('sponsorBtn');
+            
+            if (actionBtn) {
+                actionBtn.addEventListener('click', function() {
+                    window.location.href = 'https://web.c3k6.top/log';
+                });
+            }
+            
+            if (sponsorBtn) {
+                sponsorBtn.addEventListener('click', function() {
+                    window.location.href = 'https://web.c3k6.top/snr';
+                });
+            }
+        })();
     </script>
 </body>
 </html>
+
 
 
 
